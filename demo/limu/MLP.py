@@ -8,8 +8,22 @@
 @Date    ：2022/9/19 21:56 
 '''
 import torch
-from d2l import torch as d2l
+import torch.nn as nn
 
-x = torch.arange(-8.0, 8.0, 0.1, requires_grad=True)
-y = torch.relu(x)
-image = d2l.plot(x.detach(), y.detach(), 'x', 'relu(x)', figsize=(5, 2.5))
+x = torch.tensor([2, 3, 4], dtype=torch.float, requires_grad=True)
+print(x, x.grad)
+y = x * 2
+while y.norm() < 1000:
+    y = y * 2
+    print(y, y.norm())
+
+print('乘法之后',y)
+
+y.backward(torch.ones_like(y))
+print(x, x.grad)
+
+# 将x的grad清除
+x.grad.data.zero_()
+
+print(x, x.grad)
+
