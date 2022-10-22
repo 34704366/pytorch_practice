@@ -13,6 +13,7 @@ from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import matplotlib.pyplot as plt
 import numpy as np
 
+print("start")
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 X = np.arange(-5, 5, 0.25)
