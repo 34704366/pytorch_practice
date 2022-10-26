@@ -298,6 +298,9 @@ def run(runid, args):
 
 
 def main(args):
+    print(args)
+    args.density = 0.1
+    print(args)
     RunERs, RunNMAEs = [], []
     for runid in range(args.rounds):
         ER, NMAE = run(runid, args)
@@ -309,8 +312,8 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--dataset', type=str)
-    parser.add_argument('--density', type=float)
+    parser.add_argument('--dataset', type=str, default="taxi")
+    parser.add_argument('--density', type=float, default=0.05)
     parser.add_argument('--quantile', type=int, default=99)
     parser.add_argument('--rounds', type=int, default=5)
     parser.add_argument('--burn_iter', type=int, default=30)
